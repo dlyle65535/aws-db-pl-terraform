@@ -19,7 +19,4 @@ resource "random_string" "naming" {
 }
 
 variable "private_dns_enabled" { default = true }
-
-locals {
-  prefix = "pl-workspace${random_string.naming.result}"
-}
+variable "workspace_short_name" {}

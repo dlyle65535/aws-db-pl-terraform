@@ -11,11 +11,8 @@ variable "region" {
   default = "us-east-1"
 }
 variable "workspace_vpce_service" {}
+variable "workspace_short_name" {}
 variable "relay_vpce_service" {}
 variable "vpce_subnet_cidr" {}
 variable "private_dns_enabled" { default = true }
 variable "tags" { default = {} }
-
-locals {
-  prefix = "private-link-ws"
-}

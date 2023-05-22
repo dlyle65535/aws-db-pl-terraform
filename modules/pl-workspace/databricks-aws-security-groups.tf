@@ -34,8 +34,5 @@ resource "aws_security_group" "dataplane_vpce" {
       cidr_blocks = var.vpc_subnet_cidrs
     }
   }
-
-  tags = merge(data.aws_vpc.prod.tags, {
-    Name = "${local.prefix}-${data.aws_vpc.prod.id}-pl-vpce-sg-rules"
-  })
+  tags = merge(var.tags, { Name = "${var.workspace_short_name}-dp-vpce-sg-rules" })
 }

@@ -23,3 +23,17 @@ resource "aws_codeartifact_repository" "maven_central" {
   }
 }
 
+resource "aws_vpc_endpoint" "codeartifact-api" {
+  for_each = toset([
+    "com.amazonaws.us-east-1.codeartifact.api",
+    "com.amazonaws.us-east-1.codeartifact.repositories",
+  ])
+
+  service_name        = each.value
+  vpc_id              = var.vpc_id
+  vpc_endpoint_type   = "Interface"
+  security_group_ids  = [aws_security_group.codeartifact.id]
+  subnet_ids          = var.subnet_ids
+  private_dns_enabled = true
+}
+
