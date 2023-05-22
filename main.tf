@@ -23,10 +23,12 @@ module "aws-infra" {
   databricks_aws_crossaccount_policy = data.databricks_aws_crossaccount_policy.this.json
   tags = {
     Owner="david.lyle@databricks.com"}
+  providers = { aws=aws }
 }
 
 module "pl-workspace" {
   source = "./modules/pl-workspace"
+  providers = { aws=aws, databricks=databricks.mws }
   cross_account_arn = module.aws-infra.databricks-cross-account-role-arn
   vpc_id = module.aws-infra.databricks-vpc-id
   databricks_account_username = var.databricks_account_username

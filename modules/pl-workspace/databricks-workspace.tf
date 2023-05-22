@@ -1,12 +1,12 @@
 resource "databricks_mws_storage_configurations" "this" {
-  provider                   = databricks.mws
+  provider                   = databricks
   account_id                 = var.databricks_account_id
   bucket_name                = var.root_storage_bucket
   storage_configuration_name = "${local.prefix}-storage}"
 }
 
 resource "databricks_mws_private_access_settings" "pas" {
-  provider                     = databricks.mws
+  provider                     = databricks
   account_id                   = var.databricks_account_id
   private_access_settings_name = "Private Access Settings for ${local.prefix}"
   region                       = var.region
@@ -14,7 +14,7 @@ resource "databricks_mws_private_access_settings" "pas" {
 }
 
 resource "databricks_mws_workspaces" "this" {
-  provider                   = databricks.mws
+  provider                   = databricks
   account_id                 = var.databricks_account_id
   aws_region                 = var.region
   workspace_name             = local.prefix
