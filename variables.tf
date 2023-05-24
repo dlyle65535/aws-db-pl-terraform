@@ -1,9 +1,15 @@
-variable "databricks_account_username" {}
-variable "databricks_account_password" {}
-variable "databricks_account_id" {}
+variable "databricks_account_id" {
+  sensitive = true
+}
 variable "workspace_vpce_service" {}
 variable "relay_vpce_service" {}
 variable "workspace_short_name" {}
+variable "databricks_oauth" {
+  sensitive = true
+}
+variable "databricks_client_id" {
+  sensitive = true
+}
 variable "tags" {
   default = {}
 }

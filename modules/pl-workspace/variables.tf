@@ -1,6 +1,4 @@
 variable "databricks_account_id" {}
-variable "databricks_account_username" {}
-variable "databricks_account_password" {}
 variable "cross_account_arn" {}
 variable "vpc_id" {}
 variable "subnet_ids" {}
